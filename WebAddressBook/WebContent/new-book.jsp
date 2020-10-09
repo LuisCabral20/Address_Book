@@ -6,24 +6,24 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>new book</title>
 </head>
 <body>
 <form action = "createNewListServlet" method="post">
-List Name: <input type ="text" name = "listName"><br />
-Trip date: <input type ="text" name = "month" placeholder="mm" size="4"> <input type ="text" name = "day" placeholder="dd" size="4">, <input type ="text" name = "year" placeholder="yyyy" size="4">
-Shopper Name: <input type = "text" name = "shopperName"><br />
+Address Book Name: <input type ="text" name = "bookName"><br />
+Book was created on: <input type ="text" name = "month" placeholder="mm" size="4"> <input type ="text" name = "day" placeholder="dd" size="4">, <input type ="text" name = "year" placeholder="yyyy" size="4">
+This book is owned by: <input type = "text" name = "ownerName"><br />
 
-Available Items:<br />
+Available Addresses:<br />
 
-<select name="allItemsToAdd" multiple size="6">
-<c:forEach items="${requestScope.allItems}" var="currentitem">
-   <option value = "${currentitem.id}">${currentitem.store} | ${currentitem.item}</option>
+<select name="allAddressesToAdd" multiple size="6">
+<c:forEach items="${requestScope.allAddresses}" var="currentAddress">
+   <option value = "${currentAddress.id}">${currentAddress.name} | ${currentAddress.address}</option>
 </c:forEach>
 </select>
 <br />
-<input type = "submit" value="Create List and Add Items">
+<input type = "submit" value="Create Book and Add Addresses">
 </form>
-<a href = "index.html">Go add new items instead.</a>
+<a href = "index.html">Go add new addresses instead.</a>
 </body>
 </html>

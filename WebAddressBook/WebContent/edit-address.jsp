@@ -12,24 +12,23 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-<title>Edit An Item</title>
+<title>Edit An Address</title>
 </head>
 <body>
 <div class="container">
-<h2>Edit This Item </h2>
-<small class="text-muted">Make changes to the store or item</small>
+<h2>Edit This Address </h2>
+<small class="text-muted">Make changes to the contact's name or address</small>
 <br />
-<form action = "editItemServlet" method="post">
+<form action = "editAddressServlet" method="post">
 <div class="form-group">
-<label for="store">Store:</label><input type ="text" name = "store" value= "${itemToEdit.store}"><br />
+<label for="name">Name:</label><input type ="text" name = "name" value= "${addressToEdit.name}"><br />
 
 </div>
 <div class="form-group">
-<label for="item">Item:</label>
-<input type = "text" name = "item"  value= "${itemToEdit.item}"><br />
+<label for="address">Address:</label><input type = "text" name = "address"  value= "${addressToEdit.address}"><br />
 </div>
-<input type = "hidden" name = "id" value="${itemToEdit.id}">
-<input type = "submit" value="Save Edited Item" class="btn btn-primary">
+<input type = "hidden" name = "id" value="${addressToEdit.id}">
+<input type = "submit" value="Save Edited Address" class="btn btn-primary">
 </form>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

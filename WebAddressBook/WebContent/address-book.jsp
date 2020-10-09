@@ -28,8 +28,8 @@
 			<c:forEach items="${requestScope.allAddresses}" var="currentAddress">
 				<tr>
 				   <td><input type="radio" name="id" value="${currentAddress.id}" ></td>
-				   <td>${currentitem.name}</td>
-				   <td>${currentitem.address}</td>
+				   <td>${currentAddress.name}</td>
+				   <td>${currentAddress.address}</td>
 			    </tr>
 			</c:forEach>
 		</table><br/>

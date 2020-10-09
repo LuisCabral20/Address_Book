@@ -6,25 +6,25 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Edit An Existing List</title>
+<title>Edit An Existing Address Book</title>
 </head>
 <body>
-<form action = "editListDetailsServlet" method="post">
-<input type ="hidden" name = "id" value= "${listToEdit.id}">
-List Name: <input type ="text" name = "listName" value= "${listToEdit.listName}"><br />
-Trip date: <input type ="text" name = "month" placeholder="mm" size="4" value= "${month}"> <input type ="text" name = "day" placeholder="dd" size="4" value= "${date}">, <input type ="text" name = "year" placeholder="yyyy" size="4" value= "${year}">
-Shopper Name: <input type = "text" name = "shopperName" value= "${listToEdit.shopper.shopperName}"><br />
+<form action = "editBookDetailsServlet" method="post">
+<input type ="hidden" name = "id" value= "${bookToEdit.id}">
+Address Book Name: <input type ="text" name = "bookName" value= "${bookToEdit.bookName}"><br />
+Book was created on: <input type ="text" name = "month" placeholder="mm" size="4" value= "${month}"> <input type ="text" name = "day" placeholder="dd" size="4" value= "${date}">, <input type ="text" name = "year" placeholder="yyyy" size="4" value= "${year}">
+This book is owned by: <input type = "text" name = "ownerName" value= "${bookToEdit.owner.ownerName}"><br />
 
-Available Items:<br />
+Available Addresses you can add to your book:<br />
 
-<select name="allItemsToAdd" multiple size="6">
-<c:forEach items="${requestScope.allItems}" var="currentitem">
-   <option value = "${currentitem.id}">${currentitem.store} | ${currentitem.item}</option>
+<select name="allAddressesToAdd" multiple size="6">
+<c:forEach items="${requestScope.allAddresses}" var="currentAddress">
+   <option value = "${currentAddress.id}">${currentAddress.name} | ${currentAddress.address}</option>
 </c:forEach>
 </select>
 <br />
-<input type = "submit" value="Edit List and Add Items">
+<input type = "submit" value="Edit Book and Add Addresses">
 </form>
-<a href = "index.html">Go add new items instead.</a>
+<a href = "index.html">Go add new Addresses instead.</a>
 </body>
 </html>

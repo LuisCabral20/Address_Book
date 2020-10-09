@@ -6,30 +6,33 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Shopping List</title>
+<title>Address Book</title>
 </head>
 <body>
-<form method = "post" action = "listnavigationServlet">
+<form method = "post" action = "booknavigationServlet">
 <table>
-<c:forEach items="${requestScope.allLists}" var="currentlist">
+<c:forEach items="${requestScope.allBooks}" var="currentBook">
 <tr>
-   <td><input type="radio" name="id" value="${currentlist.id}"></td>
-   <td><h2>${currentlist.listName}</h2></td></tr>
-   <tr><td colspan="3">Trip Date: ${currentlist.tripDate}</td></tr>
-   <tr><td colspan="3">Shopper: ${currentlist.shopper.shopperName}</td></tr>
-   <c:forEach var = "listVal" items = "${currentlist.listOfItems}">
+   <td><input type="radio" name="id" value="${currentBook.id}"></td>
+   <td><h2>${currentBook.bookName}</h2></td></tr>
+   <tr><td colspan="3">Book started on this date: ${currentBook.bookStartedDate}</td></tr>
+   <tr><td colspan="3">This book belongs to: ${currentBook.owner.ownerName}</td></tr>
+   <c:forEach var = "bookVal" items = "${currentBook.bookOfAddresses}">
             <tr><td></td><td colspan="3">
-                ${listVal.store}, ${listVal.item}
+                ${bookVal.name}, ${bookVal.address}
                 </td>
             </tr>
   </c:forEach>
 </c:forEach>
 </table>
-<input type = "submit" value = "edit" name="doThisToList">
-<input type = "submit" value = "delete" name="doThisToList">
-<input type="submit" value = "add" name = "doThisToList">
+<input type = "submit" value = "edit" name="doThisToBook">
+<input type = "submit" value = "delete" name="doThisToBook">
+<!-- <input type="submit" value = "add" name = "doThisToBook"> -->
 </form>
-<a href="addItemsToListServlet">Create a new List</a>
+<br>
+-OR-
+<br><br>
+<a href="addAddressesToBookServlet">Create a new address book</a>
 
 </body>
 </html>
