@@ -9,18 +9,18 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="items")
+@Table(name="addresses")
 public class Address {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="ID")
 	private int id;
 	
-	@Column(name="STORE")
-	private String store;
+	@Column(name="NAME")
+	private String name;
 	
-	@Column(name="ITEM")
-	private String item;
+	@Column(name="Address")
+	private String address;
 	
 //constructors
 	public Address(){
@@ -28,9 +28,9 @@ public class Address {
 		
 	}
 	
-	public	Address(String store, String item){
-		this.store = store;
-		this.item = item;
+	public	Address(String name, String address){
+		this.name = name;
+		this.address = address;
 	}
 	
 //getters
@@ -39,12 +39,12 @@ public class Address {
 		return id;
 	}
 
-	public String getStore() {
-		return store;
+	public String getName() {
+		return name;
 	}
 
-	public String getItem() {
-		return item;
+	public String getAddress() {
+		return address;
 	}
 
 //setters
@@ -52,18 +52,18 @@ public class Address {
 		this.id = id;
 	}
 
-	public void setStore(String store) {
-		this.store = store;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public void setItem(String item) {
-		this.item = item;
+	public void setAddress(String address) {
+		this.address = address;
 	}
+
 	
-//otra methods
-	public String returnItemDetails(){
+	public String returnAddressDetails(){
 		
-		return store + ": "	+item;
+		return name + ": "	+address;
 	}
 	
 }
