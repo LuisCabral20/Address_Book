@@ -18,30 +18,30 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="list_details")
+@Table(name="book_details")
 public class BookDetails {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="LIST_ID")
+	@Column(name="BOOK_ID")
 	private int id;
-	@Column(name="LIST_NAME")
-	private String listName;
-	@Column(name="TRIP_DATE")
-	private LocalDate tripDate;
+	@Column(name="BOOK_NAME")
+	private String bookName;
+	@Column(name="BOOK_STARTED_DATE")
+	private LocalDate bookStartedDate;
 	@ManyToOne (cascade=CascadeType.PERSIST)
-	@JoinColumn(name="SHOPPER_ID")
-	private Owner shopper;
+	@JoinColumn(name="OWNER_ID")
+	private Owner owner;
 	
 	@OneToMany(cascade=CascadeType.MERGE, fetch=FetchType.EAGER)
 	@JoinTable
 	  (
-	      name="ITEMS_ON_LIST",
-	      joinColumns={ @JoinColumn(name="LIST_ID", referencedColumnName="LIST_ID") },
-	      inverseJoinColumns={ @JoinColumn(name="ITEM_ID", referencedColumnName="ID", unique=true) }
+	      name="ADDRESSES_IN_BOOK",
+	      joinColumns={ @JoinColumn(name="BOOK_ID", referencedColumnName="BOOK_ID") },
+	      inverseJoinColumns={ @JoinColumn(name="ADDRESS_ID", referencedColumnName="ID", unique=true) }
 	  )
     
-	private List<Address> listOfItems;
+	private List<Address> bookOfAddresses;
 
 	
 	public BookDetails() {
@@ -49,28 +49,28 @@ public class BookDetails {
 	}
 	
 
-	public BookDetails(int id, String listName, LocalDate tripDate, Owner shopper, List<Address> listOfItems) {
+	public BookDetails(int id, String bookName, LocalDate bookStartedDate, Owner owner, List<Address> bookOfAddresses) {
 		super();
 		this.id = id;
-		this.listName = listName;
-		this.tripDate = tripDate;
-		this.shopper = shopper;
-		this.listOfItems = listOfItems;
+		this.bookName = bookName;
+		this.bookStartedDate = bookStartedDate;
+		this.owner = owner;
+		this.bookOfAddresses = bookOfAddresses;
 	}
 
-	public BookDetails(String listName, LocalDate tripDate, Owner shopper, List<Address> listOfItems) {
+	public BookDetails(String bookName, LocalDate bookStartedDate, Owner owner, List<Address> bookOfAddresses) {
 		super();
-		this.listName = listName;
-		this.tripDate = tripDate;
-		this.shopper = shopper;
-		this.listOfItems = listOfItems;
+		this.bookName = bookName;
+		this.bookStartedDate = bookStartedDate;
+		this.owner = owner;
+		this.bookOfAddresses = bookOfAddresses;
 	}
 
-	public BookDetails(String listName, LocalDate tripDate, Owner shopper) {
+	public BookDetails(String bookName, LocalDate bookStartedDate, Owner owner) {
 		super();
-		this.listName = listName;
-		this.tripDate = tripDate;
-		this.shopper = shopper;
+		this.bookName = bookName;
+		this.bookStartedDate = bookStartedDate;
+		this.owner = owner;
 	}
 
 
@@ -80,40 +80,40 @@ public class BookDetails {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getListName() {
-		return listName;
+	public String getBookName() {
+		return bookName;
 	}
-	public void setListName(String listName) {
-		this.listName = listName;
+	public void setBookName(String bookName) {
+		this.bookName = bookName;
 	}
-	public LocalDate getTripDate() {
-		return tripDate;
+	public LocalDate getBookStartedDate() {
+		return bookStartedDate;
 	}
-	public void setTripDate(LocalDate tripDate) {
-		this.tripDate = tripDate;
+	public void setBookStartedDate(LocalDate bookStartedDate) {
+		this.bookStartedDate = bookStartedDate;
 	}
-	public Owner getShopper() {
-		return shopper;
+	public Owner getOwner() {
+		return owner;
 	}
-	public void setShopper(Owner shopper) {
-		this.shopper = shopper;
-	}
-
-
-	public List<Address> getListOfItems() {
-		return listOfItems;
+	public void setOwner(Owner owner) {
+		this.owner = owner;
 	}
 
 
-	public void setListOfItems(List<Address> listOfItems) {
-		this.listOfItems = listOfItems;
+	public List<Address> getBookOfAddresses() {
+		return bookOfAddresses;
+	}
+
+
+	public void setBookOfAddresses(List<Address> bookOfAddresses) {
+		this.bookOfAddresses = bookOfAddresses;
 	}
 
 
 	@Override
 	public String toString() {
-		return "ShoppingListDetails [id=" + id + ", ListName=" + listName + ", tripDate=" + tripDate + ", shopper="
-				+ shopper + ", listOfItems=" + listOfItems + "]";
+		return "BookDetails [id=" + id + ", BookName=" + bookName + ", bookStartedDate=" + bookStartedDate + ", owner="
+				+ owner + ", bookOfAddresses=" + bookOfAddresses + "]";
 	}
 
 

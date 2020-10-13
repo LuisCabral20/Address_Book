@@ -9,29 +9,29 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="shopper")
+@Table(name="owner")
 public class Owner {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="SHOPPER_ID")
+	@Column(name="OWNER_ID")
 	private int id;
-	@Column(name="SHOPPER_NAME")
-	private String shopperName;
+	@Column(name="OWNER_NAME")
+	private String ownerName;
 	
 	
 	public Owner() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Owner(int id, String shopperName) {
+	public Owner(int id, String ownerName) {
 		super();
 		this.id = id;
-		this.shopperName = shopperName;
+		this.ownerName = ownerName;
 	}
 	
-	public Owner(String shopperName) {
+	public Owner(String ownerName) {
 		super();
-		this.shopperName = shopperName;
+		this.ownerName = ownerName;
 	}
 	public int getId() {
 		return id;
@@ -39,15 +39,15 @@ public class Owner {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getShopperName() {
-		return shopperName;
+	public String getOwnerName() {
+		return ownerName;
 	}
-	public void setShopperName(String shopperName) {
-		this.shopperName = shopperName;
+	public void setOwnerName(String ownerName) {
+		this.ownerName = ownerName;
 	}
 	@Override
 	public String toString() {
-		return "Shopper [id=" + id + ", shopperName=" + shopperName + "]";
+		return "owner [id=" + id + ", ownerName=" + ownerName + "]";
 	}
 
 }
