@@ -10,46 +10,42 @@ import java.util.List;
 import model.Address;
 
 public class AddressHelper {
-	static EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("WebShoppingList");
+	static EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("WebAddressBook");
 	
-	public void insertItem(Address li) {
+	public void insertAddress(Address row) {
 		EntityManager em = emfactory.createEntityManager();
 		em.getTransaction().begin();
-		em.persist(li);
+		em.persist(row);
 		em.getTransaction().commit();
 		em.close();
 		
 	}
 	
-	public List<Address> showAllItems(){
+	public List<Address> showAllAddresses(){
 		EntityManager em = emfactory.createEntityManager();
-		List<Address> allItems	= em.createQuery("SELECT i FROM	ListItem i").getResultList();
-		return	allItems;
+		List<Address> allAddresses	= em.createQuery("SELECT i FROM	Addresses i").getResultList();
+		return	allAddresses;
 	}
 	
-	public void	deleteItem(Address	toDelete){
+	public void	deleteAddress(Address toDelete){
 		EntityManager em = emfactory.createEntityManager();
 		em.getTransaction().begin();
-		TypedQuery<Address> typedQuery	= em.createQuery("select li from	ListItem li	where li.store = :selectedStore	and	li.item	= :selectedItem", Address.class);
+		TypedQuery<Address> typedQuery	= em.createQuery("select row from Addresses row where row.name = :selectedName	and	row.address	= :selectedAddress", Address.class);
 	
-		//Substitute parameter	with actual	data from the toDelete item
-		typedQuery.setParameter("selectedStore", toDelete.getStore());
-		typedQuery.setParameter("selectedItem",	toDelete.getItem());
+		typedQuery.setParameter("selectedName", toDelete.getName());
+		typedQuery.setParameter("selectedAddress", toDelete.getAddress());
 		
-		//we only want one result
 		typedQuery.setMaxResults(1);
 		
-		//get	the	result	and	save it	into a new list item
-		Address result	= typedQuery.getSingleResult();
+		Address result = typedQuery.getSingleResult();
 		
-		//remove it
 		em.remove(result);
 		em.getTransaction().commit();
 		em.close();
 	
 	}
 
-	public Address searchForItemById(int idToEdit) {
+	public Address searchForAddressById(int idToEdit) {
 		EntityManager em = emfactory.createEntityManager();
 		em.getTransaction().begin();
 		Address found = em.find(Address.class, idToEdit);
@@ -57,7 +53,7 @@ public class AddressHelper {
 		return	found;
 	}
 
-	public void updateItem(Address toEdit) {
+	public void updateAddress(Address toEdit) {
 		EntityManager em =	emfactory.createEntityManager();
 		em.getTransaction().begin();
 		em.merge(toEdit);
@@ -65,24 +61,24 @@ public class AddressHelper {
 		em.close();
 	}
 
-	public List<Address> searchForItemByStore(String storeName) {
+	public List<Address> searchForAddressByName(String name) {
 		EntityManager em =	emfactory.createEntityManager();
 		em.getTransaction().begin();
-		TypedQuery<Address> typedQuery	= em.createQuery("select li	from ListItem li where li.store	= :selectedStore", Address.class);
-		typedQuery.setParameter("selectedStore", storeName);
-		List<Address> foundItems = typedQuery.getResultList();
+		TypedQuery<Address> typedQuery	= em.createQuery("select row from Address row where row.name = :selectedName", Address.class);
+		typedQuery.setParameter("selectedName", name);
+		List<Address> foundAddresses = typedQuery.getResultList();
 		em.close();
-		return	foundItems;
+		return	foundAddresses;
 	}
 
-	public List<Address> searchForItemByItem(String itemName) {
+	public List<Address> searchForAddressByAddress(String itemName) {
 		EntityManager em =	emfactory.createEntityManager();
 		em.getTransaction().begin();
-		TypedQuery<Address> typedQuery	= em.createQuery("select li	from ListItem li where li.item	= :selectedItem", Address.class);
-		typedQuery.setParameter("selectedItem",	itemName);
-		List<Address> foundItems =	typedQuery.getResultList();
+		TypedQuery<Address> typedQuery	= em.createQuery("select row from Address row where row.address = :selectedAddress", Address.class);
+		typedQuery.setParameter("selectedAddress",	itemName);
+		List<Address> foundAddresses =	typedQuery.getResultList();
 		em.close();
-		return	foundItems;
+		return	foundAddresses;
 	}
 	
 	public	void cleanUp(){
