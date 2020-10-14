@@ -16,13 +16,6 @@ import model.BookDetails;
 @WebServlet("/bookNavigationServlet")
 public class BookNavigationServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public BookNavigationServlet() {
-        super();
-    }
 
 	/**
 	 * @see HttpServlet#HttpServlet()
