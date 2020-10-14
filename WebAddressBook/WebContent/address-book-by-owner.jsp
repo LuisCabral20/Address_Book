@@ -16,7 +16,7 @@
 <title>Address Book</title>
 </head>
 <body>
-<form method = "post" action = "booknavigationServlet">
+<form method = "post" action = "bookNavigationServlet">
 <table>
 <c:forEach items="${requestScope.allBooks}" var="currentBook">
 <tr>
@@ -48,11 +48,11 @@
 </table>
 
 <br><br>
-<input type = "submit" value = "edit" name="doThisToAddress" class="btn btn-info ">
-<input type = "submit" value = "delete" name="doThisToAddress" class="btn btn-info ">
+<input type = "submit" value = "edit" name="doThisToBook" class="btn btn-info ">
+<input type = "submit" value = "delete" name="doThisToBook" class="btn btn-info ">
 <br><br>
 
-<input type="submit" value = "create new book" name = "doThisToAddress" class="btn btn-primary">
+<input type="submit" value = "createNewBook" name = "doThisToAddress" class="btn btn-primary">
 </form>
 
 
