@@ -5,39 +5,27 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+    <!-- css file -->
+    <link href = "addressBookStyle.css" rel = "stylesheet" type = "text/css"/>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-<title>Add Addresses to add to an Address Book</title>
+<title>Address Book Index page</title>
 </head>
-
 <body>
-<div class="container">
-<h2>Add New Address Option</h2>
 
-<form action = "addAddressServlet" method="post">
-<div class="form-group">
-<label for="name">Name:</label><input type ="text" name = "name"><br />
+<h2> Welcome to your virtual address book </h2>
+     <br>
+     <p> This site helps you keep track of all of your addresses. It is designed to make it easier to look up someone’s address by allowing you to store your addresses in separate books or categories such as work, friends, and family. You can easily add a new address into your known list of addresses and then you can decide later which book it belongs in.  </p>
 
-</div>
-<div class="form-group">
-<label for="address">Address:</label><input type = "text" name = "Address"><br />
-</div>
+     <button type="button" class="btn btn-primary btn-lg" onclick="location.href='viewAllAddressesServlet';">View all addresses</button>
+     <a href = "viewAllAddressesServlet"></a>
 
-<input type = "submit" value="Add new address to address option" class="btn btn-primary">
-</form>
-<br />
-<button type="button" class="btn btn-primary btn-lg" onclick="location.href='viewAllAddressesServlet';">View all Address Options</button>
-<a href = "viewAllItemsServlet"></a>
+     <button type="button" class="btn btn-primary btn-lg" onclick="location.href='viewAllBooksServlet';">View all books</button>
+     <a href = "viewAllBooksServlet"></a>
 
-<button type="button" class="btn btn-primary btn-lg" onclick="location.href='viewAllBooksServlet';">View all Address books</button>
-<a href = "viewAllBooksServlet"></a>
 
-</div>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
- 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
 </html>

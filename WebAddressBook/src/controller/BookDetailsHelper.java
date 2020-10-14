@@ -28,21 +28,17 @@ public class BookDetailsHelper {
 	}
 
 	public void deleteList(BookDetails toDelete) {
-		// TODO Auto-generated method stub
 		EntityManager em = emfactory.createEntityManager();
 		em.getTransaction().begin();
 		TypedQuery<BookDetails> typedQuery = em
 				.createQuery("select detail from ListDetails detail where detail.id = :selectedId", BookDetails.class);
-		// Substitute parameter with actual data from the toDelete item
+	
 		typedQuery.setParameter("selectedId", toDelete.getId());
 
-		// we only want one result
 		typedQuery.setMaxResults(1);
 
-		// get the result and save it into a new list item
 		BookDetails result = typedQuery.getSingleResult();
 
-		// remove it
 		em.remove(result);
 		em.getTransaction().commit();
 		em.close();
