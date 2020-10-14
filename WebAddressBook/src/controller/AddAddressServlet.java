@@ -12,9 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 import model.Address;
 
 /**
- * Servlet implementation class AddItemServlet
+ * Servlet implementation class AddAddressServlet
  */
-@WebServlet("/addItemServlet")
+@WebServlet("/addAddressServlet")
 public class AddAddressServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -29,13 +29,13 @@ public class AddAddressServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String store = request.getParameter("store");
-		String item = request.getParameter("item");
+		String name = request.getParameter("name");
+		String address = request.getParameter("address");
 		
-		Address li = new Address(store, item);
-		AddressHelper dao = new AddressHelper();
-		dao.insertItem(li);
-		getServletContext().getRequestDispatcher("/index.html").forward(request, response);
+		Address addressItem = new Address(name, address);
+		AddressHelper ah = new AddressHelper();
+		ah.insertAddress(addressItem);
+		getServletContext().getRequestDispatcher("/add-address.jsp").forward(request, response);
 	}
 
 }
