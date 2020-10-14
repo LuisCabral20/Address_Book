@@ -11,9 +11,9 @@ import javax.persistence.TypedQuery;
 import model.BookDetails;
 
 public class BookDetailsHelper {
-	static EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("WebShoppingList");
+	static EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("WebAddressBook");
 
-	public void insertNewListDetails(BookDetails s) {
+	public void insertNewBookDetails(BookDetails s) {
 		EntityManager em = emfactory.createEntityManager();
 		em.getTransaction().begin();
 		em.persist(s);
@@ -21,17 +21,17 @@ public class BookDetailsHelper {
 		em.close();
 	}
 
-	public List<BookDetails> getLists() {
+	public List<BookDetails> getBooks() {
 		EntityManager em = emfactory.createEntityManager();
-		List<BookDetails> allDetails = em.createQuery("SELECT d FROM ListDetails d").getResultList();
+		List<BookDetails> allDetails = em.createQuery("SELECT b FROM BookDetails b").getResultList();
 		return allDetails;
 	}
 
-	public void deleteList(BookDetails toDelete) {
+	public void deleteBook(BookDetails toDelete) {
 		EntityManager em = emfactory.createEntityManager();
 		em.getTransaction().begin();
 		TypedQuery<BookDetails> typedQuery = em
-				.createQuery("select detail from ListDetails detail where detail.id = :selectedId", BookDetails.class);
+				.createQuery("select detail from BookDetails detail where detail.id = :selectedId", BookDetails.class);
 	
 		typedQuery.setParameter("selectedId", toDelete.getId());
 
@@ -45,7 +45,7 @@ public class BookDetailsHelper {
 
 	}
 
-	public BookDetails searchForListDetailsById(Integer tempId) {
+	public BookDetails searchForBookDetailsById(Integer tempId) {
 		EntityManager em = emfactory.createEntityManager();
 		em.getTransaction().begin();
 		BookDetails found = em.find(BookDetails.class, tempId);
@@ -53,7 +53,7 @@ public class BookDetailsHelper {
 		return found;
 	}
 
-	public void updateList(BookDetails toEdit) {
+	public void updateBook(BookDetails toEdit) {
 		EntityManager em = emfactory.createEntityManager();
 		em.getTransaction().begin();
 

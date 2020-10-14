@@ -31,7 +31,7 @@ public class viewAllBooksServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		BookDetailsHelper slh = new BookDetailsHelper();
-		List<BookDetails> abc = slh.getLists();
+		List<BookDetails> abc = slh.getBooks();
 		request.setAttribute("allLists", abc);
 		
 		if(abc.isEmpty()){

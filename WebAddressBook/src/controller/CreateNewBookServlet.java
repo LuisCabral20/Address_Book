@@ -63,7 +63,7 @@ public class CreateNewBookServlet extends HttpServlet {
 		BookDetails sld = new BookDetails(listName, ld, shopper);
 		sld.setListOfItems(selectedItemsInList);
 		BookDetailsHelper slh = new BookDetailsHelper();
-		slh.insertNewListDetails(sld);
+		slh.insertNewBookDetails(sld);
 		
 		System.out.println("Success!");
 		System.out.println(sld.toString());

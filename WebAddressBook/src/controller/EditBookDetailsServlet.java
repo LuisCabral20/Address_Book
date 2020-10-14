@@ -54,7 +54,7 @@ public class EditBookDetailsServlet extends HttpServlet {
 		
 		
 		Integer tempId = Integer.parseInt(request.getParameter("id"));
-		BookDetails listToUpdate = dao.searchForListDetailsById(tempId);
+		BookDetails listToUpdate = dao.searchForBookDetailsById(tempId);
 
 		String newListName = request.getParameter("listName");
 
@@ -95,7 +95,7 @@ public class EditBookDetailsServlet extends HttpServlet {
 		listToUpdate.setTripDate(ld);
 		listToUpdate.setShopper(newShopper);
 
-		dao.updateList(listToUpdate);
+		dao.updateBook(listToUpdate);
 
 		getServletContext().getRequestDispatcher("/viewAllListsServlet").forward(request, response);
 	}

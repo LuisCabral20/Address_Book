@@ -45,8 +45,8 @@ public class BookNavigationServlet extends HttpServlet {
 		} else if (act.equals("delete")) {
 			try {
 				Integer tempId = Integer.parseInt(request.getParameter("id"));
-				BookDetails listToDelete = dao.searchForListDetailsById(tempId);
-				dao.deleteList(listToDelete);
+				BookDetails listToDelete = dao.searchForBookDetailsById(tempId);
+				dao.deleteBook(listToDelete);
 
 			} catch (NumberFormatException e) {
 				System.out.println("Forgot to click a button");
@@ -57,7 +57,7 @@ public class BookNavigationServlet extends HttpServlet {
 		} else if (act.equals("edit")) {
 			try {
 				Integer tempId = Integer.parseInt(request.getParameter("id"));
-				BookDetails listToEdit = dao.searchForListDetailsById(tempId);
+				BookDetails listToEdit = dao.searchForBookDetailsById(tempId);
 				request.setAttribute("listToEdit", listToEdit);
 				request.setAttribute("month", listToEdit.getTripDate().getMonthValue());
 				request.setAttribute("date", listToEdit.getTripDate().getDayOfMonth());
