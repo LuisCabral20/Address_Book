@@ -9,9 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class addItemsToListServlet
+ * Servlet implementation class addAddressesToBookServlet
  */
-@WebServlet("/addItemsToListServlet")
+@WebServlet("/addAddressesToBookServlet")
 public class AddAddressesToBookServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -27,15 +27,15 @@ public class AddAddressesToBookServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		AddressHelper dao = new AddressHelper();
+		AddressHelper adh = new AddressHelper();
 		
-		request.setAttribute("allItems", dao.showAllItems());
+		request.setAttribute("allAddresses", adh.showAllAddresses());
 					
-		if(dao.showAllItems().isEmpty()){
-				request.setAttribute("allItems", " ");
+		if(adh.showAllAddresses().isEmpty()){
+				request.setAttribute("allAddresses", " ");
 		}
 		
-		getServletContext().getRequestDispatcher("/new-list.jsp").forward(request, response);
+		getServletContext().getRequestDispatcher("/new-book.jsp").forward(request, response);
 
 	}
 
