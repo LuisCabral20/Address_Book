@@ -36,7 +36,7 @@ public class BookDetails {
 	@OneToMany(cascade=CascadeType.MERGE, fetch=FetchType.EAGER)
 	@JoinTable
 	  (
-	      name="ADDRESSES_IN_BOOK",
+	      name="addresses_in_book",
 	      joinColumns={ @JoinColumn(name="BOOK_ID", referencedColumnName="BOOK_ID") },
 	      inverseJoinColumns={ @JoinColumn(name="ADDRESS_ID", referencedColumnName="ID", unique=true) }
 	  )

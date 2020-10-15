@@ -16,7 +16,8 @@
 <title>Address Book</title>
 </head>
 <body>
-<form method = "post" action = "booknavigationServlet">
+<h2>Address Books</h2>
+<form method = "post" action = "bookNavigationServlet">
 <table>
 <c:forEach items="${requestScope.allBooks}" var="currentBook">
 <tr>
@@ -48,13 +49,13 @@
 </table>
 
 <br><br>
-<input type = "submit" value = "edit" name="doThisToAddress" class="btn btn-info ">
-<input type = "submit" value = "delete" name="doThisToAddress" class="btn btn-info ">
+<input type = "submit" value = "edit" name="doThisToBook" class="btn btn-info ">
+<input type = "submit" value = "delete" name="doThisToBook" class="btn btn-info ">
 <br><br>
 
-<input type="submit" value = "create new book" name = "doThisToAddress" class="btn btn-primary">
+<input type="submit" value = "create new book" name = "doThisToBook" class="btn btn-primary">
 </form>
-
+<a href = "index.html">Return to main page</a>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>

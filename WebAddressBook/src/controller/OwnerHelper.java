@@ -12,9 +12,9 @@ import javax.persistence.TypedQuery;
 import model.Owner;
 
 public class OwnerHelper {
-	static EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("WebShoppingList");
+	static EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("WebAddressBook");
 
-	public void insertShopper(Owner li) {
+	public void insertOwner(Owner li) {
 		EntityManager em = emfactory.createEntityManager();
 		em.getTransaction().begin();
 		em.persist(li);
@@ -22,28 +22,28 @@ public class OwnerHelper {
 		em.close();
 	}
 
-	public List<Owner> showAllShoppers() {
+	public List<Owner> showAllOwners() {
 		EntityManager em = emfactory.createEntityManager();
-		List<Owner> allShoppers = em.createQuery("SELECT s FROM Shopper s").getResultList();
-		return allShoppers;
+		List<Owner> allOwners = em.createQuery("SELECT o FROM Owner o").getResultList();
+		return allOwners;
 	}
 // can not have multiple people with same name 
-	public Owner findShopper(String nameToLookUp) {
+	public Owner findOwner(String nameToLookUp) {
 
 		EntityManager em = emfactory.createEntityManager();
 		em.getTransaction().begin();
-		TypedQuery<Owner> typedQuery = em.createQuery("select sh from Shopper sh where sh.shopperName = :selectedName",
+		TypedQuery<Owner> typedQuery = em.createQuery("select o from Owner o where o.ownerName = :selectedName",
 				Owner.class);
 		typedQuery.setParameter("selectedName", nameToLookUp);
-		Owner foundShopper;
+		Owner foundOwner;
 		try {
-			foundShopper = typedQuery.getSingleResult();
+			foundOwner = typedQuery.getSingleResult();
 		} catch (NoResultException ex) {
-			foundShopper = new Owner(nameToLookUp);
+			foundOwner = new Owner(nameToLookUp);
 		}
 		em.close();
 
-		return foundShopper;
+		return foundOwner;
 	}
 }
 

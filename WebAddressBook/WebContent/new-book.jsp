@@ -17,7 +17,7 @@
 <body>
 
 <h2> Create a new book </h2>
-<form action = "createNewListServlet" method="post">
+<form action = "createNewBookServlet" method="post">
 What would you like to call this book? <input type ="text" name = "bookName">
 <br><br>
 Book was created on: <input type ="text" name = "month" placeholder="mm" size="4"> <input type ="text" name = "day" placeholder="dd" size="4">, <input type ="text" name = "year" placeholder="yyyy" size="4">

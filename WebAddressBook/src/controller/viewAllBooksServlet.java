@@ -15,7 +15,7 @@ import model.BookDetails;
 /**
  * Servlet implementation class viewAllShoppingLists
  */
-@WebServlet("/viewAllListsServlet")
+@WebServlet("/viewAllBooksServlet")
 public class viewAllBooksServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -30,15 +30,15 @@ public class viewAllBooksServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		BookDetailsHelper slh = new BookDetailsHelper();
-		List<BookDetails> abc = slh.getLists();
-		request.setAttribute("allLists", abc);
+		BookDetailsHelper bdh = new BookDetailsHelper();
+		List<BookDetails> abc = bdh.getBooks();
+		request.setAttribute("allBooks", abc);
 		
-		if(abc.isEmpty()){
-				request.setAttribute("allLists", " ");
-		}
+//		if(abc.isEmpty()){
+//				request.setAttribute("allBooks", );
+//		}
 
-		getServletContext().getRequestDispatcher("/shopping-list-by-user.jsp").forward(request, response);
+		getServletContext().getRequestDispatcher("/address-book-by-owner.jsp").forward(request, response);
 	
 	}
 

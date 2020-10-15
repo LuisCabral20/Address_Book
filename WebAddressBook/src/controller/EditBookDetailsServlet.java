@@ -19,7 +19,7 @@ import model.Owner;
 /**
  * Servlet implementation class editListDetailsServlet
  */
-@WebServlet("/editListDetailsServlet")
+@WebServlet("/editBookDetailsServlet")
 public class EditBookDetailsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -48,23 +48,22 @@ public class EditBookDetailsServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		BookDetailsHelper dao = new BookDetailsHelper();
-		AddressHelper lih = new AddressHelper();
-		OwnerHelper sh = new OwnerHelper();
-		
+		BookDetailsHelper bdh = new BookDetailsHelper();
+		AddressHelper adh = new AddressHelper();
+		OwnerHelper oh = new OwnerHelper();
 		
 		Integer tempId = Integer.parseInt(request.getParameter("id"));
-		BookDetails listToUpdate = dao.searchForListDetailsById(tempId);
+		BookDetails bookToUpdate = bdh.searchForBookDetailsById(tempId);
 
-		String newListName = request.getParameter("listName");
+		String newBookName = request.getParameter("bookName");
 
 		String month = request.getParameter("month");
 		String day = request.getParameter("day");
 		String year = request.getParameter("year");
 		
-		String shopperName = request.getParameter("shopperName");
+		String ownerName = request.getParameter("ownerName");
 		//find our add the new shopper
-		Owner newShopper = sh.findShopper(shopperName);
+		Owner newOwner = oh.findOwner(ownerName);
 
 		LocalDate ld;
 		try {
@@ -75,29 +74,27 @@ public class EditBookDetailsServlet extends HttpServlet {
 
 		try {
 			//items are selected in list to add
-			String[] selectedItems = request.getParameterValues("allItemsToAdd");
-			List<Address> selectedItemsInList = new ArrayList<Address>();
+			String[] selectedAddresses = request.getParameterValues("allAddressesToAdd");
+			List<Address> selectedAddressesInBook = new ArrayList<Address>();
 
-			for (int i = 0; i < selectedItems.length; i++) {
-				System.out.println(selectedItems[i]);
-				Address c = lih.searchForItemById(Integer.parseInt(selectedItems[i]));
-				selectedItemsInList.add(c);
+			for (int i = 0; i < selectedAddresses.length; i++) {
+				System.out.println(selectedAddresses[i]);
+				Address c = adh.searchForAddressById(Integer.parseInt(selectedAddresses[i]));
+				selectedAddressesInBook.add(c);
 
 			}
-			listToUpdate.setListOfItems(selectedItemsInList);
+			bookToUpdate.setBookOfAddresses(selectedAddressesInBook);
 		} catch (NullPointerException ex) {
 			// no items selected in list - set to an empty list
-			List<Address> selectedItemsInList = new ArrayList<Address>();
-			listToUpdate.setListOfItems(selectedItemsInList);
+			List<Address> selectedAddressesInBook = new ArrayList<Address>();
+			bookToUpdate.setBookOfAddresses(selectedAddressesInBook);
 		}
 
-		listToUpdate.setListName(newListName);
-		listToUpdate.setTripDate(ld);
-		listToUpdate.setShopper(newShopper);
-
-		dao.updateList(listToUpdate);
-
-		getServletContext().getRequestDispatcher("/viewAllListsServlet").forward(request, response);
+		bookToUpdate.setBookName(newBookName);
+		bookToUpdate.setBookStartedDate(ld);
+		bookToUpdate.setOwner(newOwner);
+		bdh.updateBook(bookToUpdate);
+		getServletContext().getRequestDispatcher("/viewAllBooksServlet").forward(request, response);
 	}
 
 }

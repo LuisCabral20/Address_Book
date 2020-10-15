@@ -48,6 +48,7 @@
 
 		<input type="submit" value = "add new entry" name = "doThisToAddress" class="btn btn-primary">
 	</form>
+		<a href = "index.html">Return to main page</a>
 	
 </div>
 
