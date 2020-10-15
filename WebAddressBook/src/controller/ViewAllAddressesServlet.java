@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class ViewAllItemsServlet
  */
-@WebServlet("/viewAllItemsServlet")
+@WebServlet("/viewAllAddressesServlet")
 public class ViewAllAddressesServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -25,10 +25,10 @@ public class ViewAllAddressesServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		AddressHelper dao = new AddressHelper();
-		request.setAttribute("allItems", dao.showAllItems());
-		String path = "/shopping-list.jsp";
-		if(dao.showAllItems().isEmpty()){
+		AddressHelper adh = new AddressHelper();
+		request.setAttribute("allAddresses", adh.showAllAddresses());
+		String path = "/address-book.jsp";
+		if(adh.showAllAddresses().isEmpty()){
 			path = "/index.html";
 		}
 		
