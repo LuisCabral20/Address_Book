@@ -63,7 +63,7 @@ public class EditBookDetailsServlet extends HttpServlet {
 		
 		String ownerName = request.getParameter("ownerName");
 		//find our add the new shopper
-		Owner newOwner = oh.findOnwer(ownerName);
+		Owner newOwner = oh.findOwner(ownerName);
 
 		LocalDate ld;
 		try {
