@@ -41,33 +41,33 @@ public class NavigationServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		AddressHelper dao = new AddressHelper();
-		String act = request.getParameter("doThisToItem");
+		AddressHelper adh = new AddressHelper();
+		String act = request.getParameter("doThisToAddress");
 
 		if (act == null) {
 			// no button has been selected
-			getServletContext().getRequestDispatcher("/viewAllItemsServlet").forward(request, response);
+			getServletContext().getRequestDispatcher("/viewAllAddressesServlet").forward(request, response);
 
 		} else if (act.equals("delete")) {
 			try {
 				Integer tempId = Integer.parseInt(request.getParameter("id"));
-				Address itemToDelete = dao.searchForItemById(tempId);
-				dao.deleteItem(itemToDelete);
+				Address addressToDelete = adh.searchForAddressById(tempId);
+				adh.deleteAddress(addressToDelete);
 
 			} catch (NumberFormatException e) {
 				System.out.println("Forgot to click a button");
 			} finally {
-				getServletContext().getRequestDispatcher("/viewAllItemsServlet").forward(request, response);
+				getServletContext().getRequestDispatcher("/viewAllAddressesServlet").forward(request, response);
 			}
 
 		} else if (act.equals("edit")) {
 			try {
 				Integer tempId = Integer.parseInt(request.getParameter("id"));
-				Address itemToEdit = dao.searchForItemById(tempId);
-				request.setAttribute("itemToEdit", itemToEdit);
-				getServletContext().getRequestDispatcher("/edit-item.jsp").forward(request, response);
+				Address addressToEdit = adh.searchForAddressById(tempId);
+				request.setAttribute("addressToEdit", addressToEdit);
+				getServletContext().getRequestDispatcher("/edit-address.jsp").forward(request, response);
 			} catch (NumberFormatException e) {
-				getServletContext().getRequestDispatcher("/viewAllItemsServlet").forward(request, response);
+				getServletContext().getRequestDispatcher("/viewAllAddressesServlet").forward(request, response);
 			} 
 
 		} else if (act.equals("add")) {
