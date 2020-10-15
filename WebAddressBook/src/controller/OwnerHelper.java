@@ -14,7 +14,7 @@ import model.Owner;
 public class OwnerHelper {
 	static EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("WebShoppingList");
 
-	public void insertShopper(Owner li) {
+	public void insertOwner(Owner li) {
 		EntityManager em = emfactory.createEntityManager();
 		em.getTransaction().begin();
 		em.persist(li);
@@ -22,13 +22,13 @@ public class OwnerHelper {
 		em.close();
 	}
 
-	public List<Owner> showAllShoppers() {
+	public List<Owner> showAllOnwers() {
 		EntityManager em = emfactory.createEntityManager();
 		List<Owner> allShoppers = em.createQuery("SELECT s FROM Shopper s").getResultList();
 		return allShoppers;
 	}
 // can not have multiple people with same name 
-	public Owner findShopper(String nameToLookUp) {
+	public Owner findOnwer(String nameToLookUp) {
 
 		EntityManager em = emfactory.createEntityManager();
 		em.getTransaction().begin();
