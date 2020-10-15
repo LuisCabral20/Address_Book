@@ -10,9 +10,9 @@ import javax.servlet.http.HttpServletResponse;
 import model.Address;
 
 /**
- * Servlet implementation class editItemServlet
+ * Servlet implementation class EditAddressServlet
  */
-@WebServlet("/editItemServlet")
+@WebServlet("/editAddressServlet")
 public class EditAddressServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -29,19 +29,19 @@ public class EditAddressServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		AddressHelper dao = new AddressHelper();
+		AddressHelper adh = new AddressHelper();
 		
-		String store = request.getParameter("store");
-		String item = request.getParameter("item");
+		String name = request.getParameter("name");
+		String address = request.getParameter("address");
 		Integer tempId = Integer.parseInt(request.getParameter("id"));
 				
-		Address itemToUpdate = dao.searchForItemById(tempId);
-		itemToUpdate.setItem(item);
-		itemToUpdate.setStore(store);
+		Address addressToUpdate = adh.searchForAddressById(tempId);
+		addressToUpdate.setAddress(address);
+		addressToUpdate.setName(name);
 				
-		dao.updateItem(itemToUpdate);
+		adh.updateAddress(addressToUpdate);
 
-		getServletContext().getRequestDispatcher("/viewAllItemsServlet").forward(request, response);
+		getServletContext().getRequestDispatcher("/ViewAllAddressesServlet").forward(request, response);
 
 
 	}
