@@ -19,7 +19,7 @@ import model.BookDetails;
 /**
  * Servlet implementation class createNewListServlet
  */
-@WebServlet("/createNewListServlet")
+@WebServlet("/createNewBookServlet")
 public class CreateNewBookServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -34,14 +34,14 @@ public class CreateNewBookServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		AddressHelper lih = new AddressHelper();
-		String listName = request.getParameter("listName");
-		System.out.println("List Name: "+ listName);
+		AddressHelper adh = new AddressHelper();
+		String bookName = request.getParameter("bookName");
+		System.out.println("Book name: "+ bookName);
 		
 		String month = request.getParameter("month");
 		String day = request.getParameter("day");
 		String year = request.getParameter("year");
-		String shopperName = request.getParameter("shopperName");
+		String ownerName = request.getParameter("ownerName");
 		LocalDate ld;
 		try {
 			ld = LocalDate.of(Integer.parseInt(year), Integer.parseInt(month), Integer.parseInt(day));
@@ -49,26 +49,26 @@ public class CreateNewBookServlet extends HttpServlet {
 			ld = LocalDate.now();
 		}
 		
-		String[] selectedItems = request.getParameterValues("allItemsToAdd");
-		List<Address> selectedItemsInList = new ArrayList<Address>();
+		String[] selectedAddresses = request.getParameterValues("allAddressesToAdd");
+		List<Address> selectedAddressesInList = new ArrayList<Address>();
 		
-		for(int i = 0; i<selectedItems.length; i++) {
-			System.out.println(selectedItems[i]);
-			Address c = lih.searchForItemById(Integer.parseInt(selectedItems[i]));
-			selectedItemsInList.add(c);
+		for(int i = 0; i<selectedAddresses.length; i++) {
+			System.out.println(selectedAddresses[i]);
+			Address c = adh.searchForAddressById(Integer.parseInt(selectedAddresses[i]));
+			selectedAddressesInList.add(c);
 			
 		}
 		
-		Owner shopper = new Owner(shopperName);
-		BookDetails sld = new BookDetails(listName, ld, shopper);
-		sld.setListOfItems(selectedItemsInList);
-		BookDetailsHelper slh = new BookDetailsHelper();
-		slh.insertNewBookDetails(sld);
+		Owner onwer = new Owner(ownerName);
+		BookDetails bkd = new BookDetails(bookName, ld, onwer);
+		bkd.setBookOfAddresses(selectedAddressesInList);
+		BookDetailsHelper bdh = new BookDetailsHelper();
+		bdh.insertNewBookDetails(bkd);
 		
 		System.out.println("Success!");
-		System.out.println(sld.toString());
+		System.out.println(bkd.toString());
 		
-		getServletContext().getRequestDispatcher("/viewAllListsServlet").forward(request, response);
+		getServletContext().getRequestDispatcher("/viewAllBooksServlet").forward(request, response);
 		
 	
 	}
