@@ -32,9 +32,9 @@ public class AddAddressServlet extends HttpServlet {
 		String name = request.getParameter("name");
 		String address = request.getParameter("address");
 		
-		Address addressItem = new Address(name, address);
+		Address addressObj = new Address(name, address);
 		AddressHelper ah = new AddressHelper();
-		ah.insertAddress(addressItem);
+		ah.insertAddress(addressObj);
 		getServletContext().getRequestDispatcher("/add-address.jsp").forward(request, response);
 	}
 

@@ -23,14 +23,14 @@ public class AddressHelper {
 	
 	public List<Address> showAllAddresses(){
 		EntityManager em = emfactory.createEntityManager();
-		List<Address> allAddresses	= em.createQuery("SELECT i FROM	Addresses i").getResultList();
+		List<Address> allAddresses	= em.createQuery("SELECT i FROM	Address i").getResultList();
 		return	allAddresses;
 	}
 	
 	public void	deleteAddress(Address toDelete){
 		EntityManager em = emfactory.createEntityManager();
 		em.getTransaction().begin();
-		TypedQuery<Address> typedQuery	= em.createQuery("select row from Addresses row where row.name = :selectedName	and	row.address	= :selectedAddress", Address.class);
+		TypedQuery<Address> typedQuery	= em.createQuery("select row from Address row where row.name = :selectedName	and	row.address	= :selectedAddress", Address.class);
 	
 		typedQuery.setParameter("selectedName", toDelete.getName());
 		typedQuery.setParameter("selectedAddress", toDelete.getAddress());

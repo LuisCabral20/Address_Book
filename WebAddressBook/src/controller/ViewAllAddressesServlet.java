@@ -29,7 +29,7 @@ public class ViewAllAddressesServlet extends HttpServlet {
 		request.setAttribute("allAddresses", adh.showAllAddresses());
 		String path = "/address-book.jsp";
 		if(adh.showAllAddresses().isEmpty()){
-			path = "/index.html";
+			path = "/address-book.jsp";
 		}
 		
 		getServletContext().getRequestDispatcher(path).forward(request, response);

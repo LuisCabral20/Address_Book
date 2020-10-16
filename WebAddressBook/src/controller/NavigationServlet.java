@@ -70,8 +70,8 @@ public class NavigationServlet extends HttpServlet {
 				getServletContext().getRequestDispatcher("/viewAllAddressesServlet").forward(request, response);
 			} 
 
-		} else if (act.equals("add")) {
-			getServletContext().getRequestDispatcher("/index.html").forward(request, response);
+		} else if (act.equals("add new entry")) {
+			getServletContext().getRequestDispatcher("/add-address.jsp").forward(request, response);
 		}
 
 	}

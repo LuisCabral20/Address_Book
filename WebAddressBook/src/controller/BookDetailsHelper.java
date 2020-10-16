@@ -23,8 +23,8 @@ public class BookDetailsHelper {
 
 	public List<BookDetails> getBooks() {
 		EntityManager em = emfactory.createEntityManager();
-		List<BookDetails> allDetails = em.createQuery("SELECT b FROM BookDetails b").getResultList();
-		return allDetails;
+		List<BookDetails> allBooks = em.createQuery("SELECT b FROM BookDetails b").getResultList();
+		return allBooks;
 	}
 
 	public void deleteBook(BookDetails toDelete) {

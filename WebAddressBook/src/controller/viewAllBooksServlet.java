@@ -34,9 +34,9 @@ public class viewAllBooksServlet extends HttpServlet {
 		List<BookDetails> abc = bdh.getBooks();
 		request.setAttribute("allBooks", abc);
 		
-		if(abc.isEmpty()){
-				request.setAttribute("allBooks", " ");
-		}
+//		if(abc.isEmpty()){
+//				request.setAttribute("allBooks", );
+//		}
 
 		getServletContext().getRequestDispatcher("/address-book-by-owner.jsp").forward(request, response);
 	

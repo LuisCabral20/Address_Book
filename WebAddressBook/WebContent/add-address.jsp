@@ -24,7 +24,7 @@
 
 </div>
 <div class="form-group">
-<label for="address">Address:</label><input type = "text" name = "Address"><br />
+<label for="address">Address:</label><input type = "text" name = "address"><br />
 </div>
 
 <input type = "submit" value="Add" class="btn btn-primary">

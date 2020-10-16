@@ -77,7 +77,7 @@ public class BookNavigationServlet extends HttpServlet {
 						getServletContext().getRequestDispatcher("/viewAllBooksServlet").forward(request, response);
 					}
 		
-				} else if (act.equals("createNewBook")) {
+				} else if (act.equals("create new book")) {
 					AddressHelper daoForAddresses = new AddressHelper();
 					request.setAttribute("allAddresses", daoForAddresses.showAllAddresses());
 					getServletContext().getRequestDispatcher("/new-book.jsp").forward(request, response);
