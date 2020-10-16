@@ -41,7 +41,7 @@ public class EditAddressServlet extends HttpServlet {
 				
 		adh.updateAddress(addressToUpdate);
 
-		getServletContext().getRequestDispatcher("/ViewAllAddressesServlet").forward(request, response);
+		getServletContext().getRequestDispatcher("/viewAllAddressesServlet").forward(request, response);
 
 
 	}

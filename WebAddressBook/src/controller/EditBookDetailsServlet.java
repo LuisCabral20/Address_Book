@@ -86,8 +86,8 @@ public class EditBookDetailsServlet extends HttpServlet {
 			bookToUpdate.setBookOfAddresses(selectedAddressesInBook);
 		} catch (NullPointerException ex) {
 			// no items selected in list - set to an empty list
-			List<Address> selectedItemsInList = new ArrayList<Address>();
-			bookToUpdate.setBookOfAddresses(selectedItemsInList);
+			List<Address> selectedAddressesInBook = new ArrayList<Address>();
+			bookToUpdate.setBookOfAddresses(selectedAddressesInBook);
 		}
 
 		bookToUpdate.setBookName(newBookName);

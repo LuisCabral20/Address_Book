@@ -19,7 +19,7 @@ public class Address {
 	@Column(name="NAME")
 	private String name;
 	
-	@Column(name="Address")
+	@Column(name="ADDRESS")
 	private String address;
 	
 //constructors
